@@ -1,6 +1,6 @@
 // Defining routes for sending to database
 const router = require("express").Router();
-const bookController = require("../controllers/bookController");
+const bookController = require("../../controllers/bookController");
 
 // For all books, match them with route "api/books"
 router.route("/")
@@ -8,7 +8,7 @@ router.route("/")
   .post(bookController.create);
 
   // For a book specific with id, match it with route "/api/books/:id"
-  router.route('/:id')
-    .delete(bookController.remove);
+router.route("/:id")
+  .delete(bookController.remove);
 
-    module.exports = router; 
+  module.exports = router; 

@@ -1,14 +1,16 @@
-require('dotenv').config();
-const key = process.env.API_KEY; 
-const URL = `https://www.googleapis.com/books/v1/volumes?`;
 import axios from "axios"; 
 
-export default {
+require('dotenv').config({ path: '/client/.env'});
+const key = process.env.API_KEY;
+console.log(key); 
+const URL = `https://www.googleapis.com/books/v1/volumes?`;
 
+export default {
+    // Consumes Google API to find book based on keyword
     findBook: searchBy => {
-        return axios.get(`${URL}q=${searchBy}&key=${key}`)
+        return axios.get(`${URL}q=${searchBy || ""}`)
     },
-    // Gets all books
+    // Gets all books from database
     getBooks: () => {
     return axios.get("/api/books");
     },
